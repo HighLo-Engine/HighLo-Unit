@@ -13,18 +13,11 @@ project "HighLo-Unit"
         "src/**.cpp"
     }
 
-    includedirs
-    {
-		"src"
-    }
-
-    links
-    {
-    }
-
     defines
 	{
 		"_CRT_SECURE_NO_WARNINGS",
+		"HIGHLO_UNIT_USE_DLL",
+		"HIGHLO_UNIT_LIBRARY_EXPORT"
 	}
 
     filter "system:windows"
