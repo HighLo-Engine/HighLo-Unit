@@ -35,7 +35,7 @@ namespace highloUnit
 		int64 end = std::chrono::time_point_cast<std::chrono::microseconds>(endPoint).time_since_epoch().count();
 
 		std::stringstream ss;
-		ss << " The test took " << (end - start) << " microseconds.";
+		ss << " The Test took " << (end - start) << " microseconds.";
 		OutputString = ss.str().c_str();
 		Stopped = true;
 	}

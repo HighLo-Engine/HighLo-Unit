@@ -17,18 +17,16 @@ namespace highloUnit
 		}
 	}
 
-	void UnitTest::AppendTest(const HighLoUnitFunc &func)
+	void UnitTest::AppendTest(const HighLoUnitFunc &func, bool enabled)
 	{
-		UnitFuncs.push_back(func);
+		UnitFuncs.push_back({ func, enabled });
 	}
 
-	void UnitTest::AppendAllTests(HighLoUnitFunc funcs[], uint32 count)
+	void UnitTest::AppendAllTests(const std::vector<UnitTestEntry> &funcs)
 	{
-		uint32 i = 0;
-
-		for (i = 0; i < count; ++i)
+		for (UnitTestEntry entry : funcs)
 		{
-			UnitFuncs.push_back(funcs[i]);
+			UnitFuncs.push_back(entry);
 		}
 	}
 
@@ -42,7 +40,17 @@ namespace highloUnit
 
 		for (i = 0; i < UnitFuncs.size(); ++i)
 		{
-			exitCode = UnitFuncs[i]();
+			if (!UnitFuncs[i].Enabled)
+			{
+				foreground = ConsoleForeground::YELLOW;
+				std::stringstream ss;
+				ss << "Skipped test " << UnitFuncs[i].FunctionName;
+
+				console->WriteLine(ss.str().c_str(), foreground, background);
+				continue;
+			}
+
+			exitCode = UnitFuncs[i].Function();
 			if (exitCode == 1)
 				{
 				foreground = ConsoleForeground::RED;

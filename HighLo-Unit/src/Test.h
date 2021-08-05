@@ -13,16 +13,30 @@ namespace highloUnit
 {
 #define HL_UNIT_ASSERT(x, testName) { if(!(x)) { Ref<Console> console = Console::Create(); ConsoleForeground foreground = ConsoleForeground::RED; ConsoleBackground background = ConsoleBackground::BLACK; std::stringstream ss; ss << "Error: Test " << testName << " has failed."; console->WriteLine(ss.str().c_str(), foreground, background); return true; } }
 
+	struct UnitTestEntry
+	{
+		bool Enabled = true;
+		HighLoUnitFunc Function;
+		const char *FunctionName;
+
+		HL_UNIT_API UnitTestEntry(const HighLoUnitFunc &func, bool enabled = true, const char *funcName = "")
+		{
+			Enabled = enabled;
+			Function = func;
+			FunctionName = funcName;
+		}
+	};
+
 	class UnitTest
 	{
 	private:
 
-		std::vector<HighLoUnitFunc> UnitFuncs;
+		std::vector<UnitTestEntry> UnitFuncs;
 
 	public:
 
-		HL_UNIT_API void AppendTest(const HighLoUnitFunc &func);
-		HL_UNIT_API void AppendAllTests(HighLoUnitFunc funcs[], uint32 count);
+		HL_UNIT_API void AppendTest(const HighLoUnitFunc &func, bool enabled);
+		HL_UNIT_API void AppendAllTests(const std::vector<UnitTestEntry> &funcs);
 
 		HL_UNIT_API int32 ExecuteTests();
 
