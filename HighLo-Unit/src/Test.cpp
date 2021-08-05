@@ -63,6 +63,7 @@ namespace highloUnit
 		std::stringstream ss;
 		ss << "OK: All Tests have passed successfully!" << timer.GetOutputString();
 
+		foreground = ConsoleForeground::GREEN;
 		console->WriteLine(ss.str().c_str(), foreground, background);
 		return exitCode;
 	}
