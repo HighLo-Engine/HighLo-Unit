@@ -32,7 +32,8 @@ namespace highloUnit
 
 	int32 UnitTest::ExecuteTests()
 	{
-		int32 exitCode = 0, i = 0;
+		int32 exitCode = 0;
+		int32 i = 0;
 		Timer timer("GlobalTimer");
 		Ref<Console> console = Console::Create();
 		ConsoleForeground foreground = ConsoleForeground::GREEN;
@@ -65,7 +66,7 @@ namespace highloUnit
 
 		foreground = ConsoleForeground::GREEN;
 		console->WriteLine(ss.str().c_str(), foreground, background);
-		return exitCode;
+		return 0;
 	}
 
 	bool UnitTest::AssertEqual(Timer &timer, const char *str1, wchar_t *str2)
