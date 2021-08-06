@@ -2,17 +2,17 @@
 
 #include <string>
 #include <sstream>
+#include <iostream>
 #include <functional>
 
 #include "Core/Core.h"
-#include "Core/Console.h"
 #include "Core/Timer.h"
 
 using HighLoUnitFunc = std::function<bool()>;
 
 namespace highloUnit
 {
-#define HL_UNIT_ASSERT(x, testName) { if(!(x)) { Ref<Console> console = Console::Create(); ConsoleForeground foreground = ConsoleForeground::RED; ConsoleBackground background = ConsoleBackground::BLACK; std::stringstream ss; ss << "Error: Test " << testName << " has failed."; console->WriteLine(ss.str().c_str(), foreground, background); return true; } }
+#define HL_UNIT_ASSERT(x, testName) { if(!(x)) { std::cout << "Error: Test " << testName << " has failed." << std::endl; return true; } }
 
 	struct UnitTestEntry
 	{
@@ -75,15 +75,7 @@ namespace highloUnit
 			if (!timer.IsStopped())
 				timer.Stop();
 
-			Ref<Console> console = Console::Create();
-			ConsoleForeground foreground = ConsoleForeground::GREEN;
-			ConsoleBackground background = ConsoleBackground::BLACK;
-
-			std::stringstream ss;
-			ss << "OK: Test " << timer.GetName() << " has passed." << timer.GetOutputString();
-
-			console->WriteLine(ss.str().c_str(), foreground, background);
-
+			std::cout << "OK: Test " << timer.GetName() << " has passed." << timer.GetOutputString() << std::endl;
 			return false;
 		}
 
@@ -95,15 +87,7 @@ namespace highloUnit
 			if (!timer.IsStopped())
 				timer.Stop();
 
-			Ref<Console> console = Console::Create();
-			ConsoleForeground foreground = ConsoleForeground::GREEN;
-			ConsoleBackground background = ConsoleBackground::BLACK;
-
-			std::stringstream ss;
-			ss << "OK: Test " << timer.GetName() << " has passed." << timer.GetOutputString();
-
-			console->WriteLine(ss.str().c_str(), foreground, background);
-
+			std::cout << "OK: Test " << timer.GetName() << " has passed." << timer.GetOutputString() << std::endl;
 			return false;
 		}
 
@@ -115,15 +99,7 @@ namespace highloUnit
 			if (!timer.IsStopped())
 				timer.Stop();
 
-			Ref<Console> console = Console::Create();
-			ConsoleForeground foreground = ConsoleForeground::GREEN;
-			ConsoleBackground background = ConsoleBackground::BLACK;
-
-			std::stringstream ss;
-			ss << "OK: Test " << timer.GetName() << " has passed." << timer.GetOutputString();
-
-			console->WriteLine(ss.str().c_str(), foreground, background);
-
+			std::cout << "OK: Test " << timer.GetName() << " has passed." << timer.GetOutputString() << std::endl;
 			return false;
 		}
 
@@ -135,15 +111,7 @@ namespace highloUnit
 			if (!timer.IsStopped())
 				timer.Stop();
 
-			Ref<Console> console = Console::Create();
-			ConsoleForeground foreground = ConsoleForeground::GREEN;
-			ConsoleBackground background = ConsoleBackground::BLACK;
-
-			std::stringstream ss;
-			ss << "OK: Test " << timer.GetName() << " has passed." << timer.GetOutputString();
-
-			console->WriteLine(ss.str().c_str(), foreground, background);
-
+			std::cout << "OK: Test " << timer.GetName() << " has passed." << timer.GetOutputString() << std::endl;
 			return false;
 		}
 
@@ -155,15 +123,7 @@ namespace highloUnit
 			if (!timer.IsStopped())
 				timer.Stop();
 
-			Ref<Console> console = Console::Create();
-			ConsoleForeground foreground = ConsoleForeground::GREEN;
-			ConsoleBackground background = ConsoleBackground::BLACK;
-
-			std::stringstream ss;
-			ss << "OK: Test " << timer.GetName() << " has passed." << timer.GetOutputString();
-
-			console->WriteLine(ss.str().c_str(), foreground, background);
-
+			std::cout << "OK: Test " << timer.GetName() << " has passed." << timer.GetOutputString() << std::endl;
 			return false;
 		}
 
@@ -175,15 +135,7 @@ namespace highloUnit
 			if (!timer.IsStopped())
 				timer.Stop();
 
-			Ref<Console> console = Console::Create();
-			ConsoleForeground foreground = ConsoleForeground::GREEN;
-			ConsoleBackground background = ConsoleBackground::BLACK;
-
-			std::stringstream ss;
-			ss << "OK: Test " << timer.GetName() << " has passed." << timer.GetOutputString();
-
-			console->WriteLine(ss.str().c_str(), foreground, background);
-
+			std::cout << "OK: Test " << timer.GetName() << " has passed." << timer.GetOutputString() << std::endl;
 			return false;
 		}
 
@@ -195,15 +147,7 @@ namespace highloUnit
 			if (!timer.IsStopped())
 				timer.Stop();
 
-			Ref<Console> console = Console::Create();
-			ConsoleForeground foreground = ConsoleForeground::GREEN;
-			ConsoleBackground background = ConsoleBackground::BLACK;
-
-			std::stringstream ss;
-			ss << "OK: Test " << timer.GetName() << " has passed." << timer.GetOutputString();
-
-			console->WriteLine(ss.str().c_str(), foreground, background);
-
+			std::cout << "OK: Test " << timer.GetName() << " has passed." << timer.GetOutputString() << std::endl;
 			return false;
 		}
 
@@ -215,15 +159,7 @@ namespace highloUnit
 
 			HL_UNIT_ASSERT(str1 != str2, timer.GetName());
 
-			Ref<Console> console = Console::Create();
-			ConsoleForeground foreground = ConsoleForeground::GREEN;
-			ConsoleBackground background = ConsoleBackground::BLACK;
-
-			std::stringstream ss;
-			ss << "OK: Test " << timer.GetName() << " has passed." << timer.GetOutputString();
-
-			console->WriteLine(ss.str().c_str(), foreground, background);
-
+			std::cout << "OK: Test " << timer.GetName() << " has passed." << timer.GetOutputString() << std::endl;
 			return false;
 		}
 
@@ -235,15 +171,7 @@ namespace highloUnit
 
 			HL_UNIT_ASSERT(d1 != d2, timer.GetName());
 
-			Ref<Console> console = Console::Create();
-			ConsoleForeground foreground = ConsoleForeground::GREEN;
-			ConsoleBackground background = ConsoleBackground::BLACK;
-
-			std::stringstream ss;
-			ss << "OK: Test " << timer.GetName() << " has passed." << timer.GetOutputString();
-
-			console->WriteLine(ss.str().c_str(), foreground, background);
-
+			std::cout << "OK: Test " << timer.GetName() << " has passed." << timer.GetOutputString() << std::endl;
 			return false;
 		}
 
@@ -255,15 +183,7 @@ namespace highloUnit
 
 			HL_UNIT_ASSERT(d1 != d2, timer.GetName());
 
-			Ref<Console> console = Console::Create();
-			ConsoleForeground foreground = ConsoleForeground::GREEN;
-			ConsoleBackground background = ConsoleBackground::BLACK;
-
-			std::stringstream ss;
-			ss << "OK: Test " << timer.GetName() << " has passed." << timer.GetOutputString();
-
-			console->WriteLine(ss.str().c_str(), foreground, background);
-
+			std::cout << "OK: Test " << timer.GetName() << " has passed." << timer.GetOutputString() << std::endl;
 			return false;
 		}
 
@@ -275,15 +195,7 @@ namespace highloUnit
 
 			HL_UNIT_ASSERT(d1 != d2, timer.GetName());
 
-			Ref<Console> console = Console::Create();
-			ConsoleForeground foreground = ConsoleForeground::GREEN;
-			ConsoleBackground background = ConsoleBackground::BLACK;
-
-			std::stringstream ss;
-			ss << "OK: Test " << timer.GetName() << " has passed." << timer.GetOutputString();
-
-			console->WriteLine(ss.str().c_str(), foreground, background);
-
+			std::cout << "OK: Test " << timer.GetName() << " has passed." << timer.GetOutputString() << std::endl;
 			return false;
 		}
 
@@ -295,15 +207,7 @@ namespace highloUnit
 
 			HL_UNIT_ASSERT(d1 != d2, timer.GetName());
 
-			Ref<Console> console = Console::Create();
-			ConsoleForeground foreground = ConsoleForeground::GREEN;
-			ConsoleBackground background = ConsoleBackground::BLACK;
-
-			std::stringstream ss;
-			ss << "OK: Test " << timer.GetName() << " has passed." << timer.GetOutputString();
-
-			console->WriteLine(ss.str().c_str(), foreground, background);
-
+			std::cout << "OK: Test " << timer.GetName() << " has passed." << timer.GetOutputString() << std::endl;
 			return false;
 		}
 
@@ -315,15 +219,7 @@ namespace highloUnit
 
 			HL_UNIT_ASSERT(strcmp(d1, d2) != 0, timer.GetName());
 
-			Ref<Console> console = Console::Create();
-			ConsoleForeground foreground = ConsoleForeground::GREEN;
-			ConsoleBackground background = ConsoleBackground::BLACK;
-
-			std::stringstream ss;
-			ss << "OK: Test " << timer.GetName() << " has passed." << timer.GetOutputString();
-
-			console->WriteLine(ss.str().c_str(), foreground, background);
-
+			std::cout << "OK: Test " << timer.GetName() << " has passed." << timer.GetOutputString() << std::endl;
 			return false;
 		}
 
@@ -335,15 +231,7 @@ namespace highloUnit
 
 			HL_UNIT_ASSERT(d1 != d2, timer.GetName());
 
-			Ref<Console> console = Console::Create();
-			ConsoleForeground foreground = ConsoleForeground::GREEN;
-			ConsoleBackground background = ConsoleBackground::BLACK;
-
-			std::stringstream ss;
-			ss << "OK: Test " << timer.GetName() << " has passed." << timer.GetOutputString();
-
-			console->WriteLine(ss.str().c_str(), foreground, background);
-
+			std::cout << "OK: Test " << timer.GetName() << " has passed." << timer.GetOutputString() << std::endl;
 			return false;
 		}
 
@@ -355,15 +243,7 @@ namespace highloUnit
 
 			HL_UNIT_ASSERT(d1 != d2, timer.GetName());
 
-			Ref<Console> console = Console::Create();
-			ConsoleForeground foreground = ConsoleForeground::GREEN;
-			ConsoleBackground background = ConsoleBackground::BLACK;
-
-			std::stringstream ss;
-			ss << "OK: Test " << timer.GetName() << " has passed." << timer.GetOutputString();
-
-			console->WriteLine(ss.str().c_str(), foreground, background);
-
+			std::cout << "OK: Test " << timer.GetName() << " has passed." << timer.GetOutputString() << std::endl;
 			return false;
 		}
 
