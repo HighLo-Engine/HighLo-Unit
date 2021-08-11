@@ -17,47 +17,7 @@ namespace highloUnit
 		}
 	}
 
-	void UnitTest::AppendTest(const HighLoUnitFunc &func, bool enabled)
-	{
-		UnitFuncs.push_back({ func, enabled });
-	}
-
-	void UnitTest::AppendAllTests(const std::vector<UnitTestEntry> &funcs)
-	{
-		for (UnitTestEntry entry : funcs)
-		{
-			UnitFuncs.push_back(entry);
-		}
-	}
-
-	int32 UnitTest::ExecuteTests()
-	{
-		int32 exitCode = 0;
-		int32 i = 0;
-		Timer timer("GlobalTimer");
-
-		for (i = 0; i < UnitFuncs.size(); ++i)
-		{
-			if (!UnitFuncs[i].Enabled)
-			{
-				std::cout << "Skipped test " << UnitFuncs[i].FunctionName << std::endl;
-				continue;
-			}
-
-			exitCode = UnitFuncs[i].Function();
-			if (exitCode == 1)
-				{
-				std::cout << "Error: Some tests have failed!" << std::endl;
-				return 1;
-				}
-		}
-
-		timer.Stop();
-		std::cout << "OK: All Tests have passed successfully!" << std::endl;
-		return 0;
-	}
-
-	bool UnitTest::AssertEqual(Timer &timer, const char *str1, wchar_t *str2)
+	bool Test::AssertEqual(Timer &timer, const char *str1, wchar_t *str2)
 	{
 		if (!timer.IsStopped())
 			timer.Stop();
@@ -69,7 +29,7 @@ namespace highloUnit
 		return false;
 	}
 
-	bool UnitTest::AssertNotEqual(Timer &timer, const char *str1, wchar_t *str2)
+	bool Test::AssertNotEqual(Timer &timer, const char *str1, wchar_t *str2)
 	{
 		if (!timer.IsStopped())
 			timer.Stop();
@@ -81,7 +41,7 @@ namespace highloUnit
 		return false;
 	}
 
-	bool UnitTest::AssertEqual(Timer &timer, const char *str1, const char *str2)
+	bool Test::AssertEqual(Timer &timer, const char *str1, const char *str2)
 	{
 		if (!timer.IsStopped())
 			timer.Stop();
@@ -92,7 +52,7 @@ namespace highloUnit
 		return false;
 	}
 
-	bool UnitTest::AssertNotEqual(Timer &timer, const char *str1, const char *str2)
+	bool Test::AssertNotEqual(Timer &timer, const char *str1, const char *str2)
 	{
 		if (!timer.IsStopped())
 			timer.Stop();

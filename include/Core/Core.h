@@ -16,6 +16,8 @@
 
 #endif
 
+#define HL_UNIT_ASSERT(x, testName) { if(!(x)) { std::cout << "Error: Test " << testName << " has failed." << std::endl; return true; } }
+
 namespace highloUnit
 {
 	typedef unsigned int uint32;
