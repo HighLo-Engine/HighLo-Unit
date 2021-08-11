@@ -23,11 +23,13 @@
     </ClInclude>
     <ClInclude Include="src\HighLo-Unit.h" />
     <ClInclude Include="src\Test.h" />
+    <ClInclude Include="src\UnitTest.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Core\Timer.cpp">
       <Filter>Core</Filter>
     </ClCompile>
     <ClCompile Include="src\Test.cpp" />
+    <ClCompile Include="src\UnitTest.cpp" />
   </ItemGroup>
 </Project>
