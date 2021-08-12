@@ -1,6 +1,7 @@
 #pragma once
 
 #include <string>
+#include <vector>
 #include <iostream>
 
 #include "Core/Core.h"
@@ -124,6 +125,18 @@ namespace highloUnit
 		}
 
 		template<>
+		HL_UNIT_API inline static bool AssertEqual(Timer &timer, const std::vector<char*> &d1, const std::vector<char*> &d2)
+		{
+			HL_UNIT_ASSERT(d1 == d2, timer.GetName());
+
+			if (!timer.IsStopped())
+				timer.Stop();
+
+			std::cout << "OK: Test " << timer.GetName() << " has passed." << timer.GetOutputString() << std::endl;
+			return false;
+		}
+
+		template<>
 		HL_UNIT_API inline static bool AssertEqual(Timer &timer, const int32 &d1, const int32 &d2)
 		{
 			HL_UNIT_ASSERT(d1 == d2, timer.GetName());
@@ -233,6 +246,18 @@ namespace highloUnit
 
 		template<>
 		HL_UNIT_API inline static bool AssertNotEqual(Timer &timer, const char &d1, const char &d2)
+		{
+			HL_UNIT_ASSERT(d1 != d2, timer.GetName());
+
+			if (!timer.IsStopped())
+				timer.Stop();
+
+			std::cout << "OK: Test " << timer.GetName() << " has passed." << timer.GetOutputString() << std::endl;
+			return false;
+		}
+
+		template<>
+		HL_UNIT_API inline static bool AssertNotEqual(Timer &timer, const std::vector<char*> &d1, const std::vector<char*> &d2)
 		{
 			HL_UNIT_ASSERT(d1 != d2, timer.GetName());
 
