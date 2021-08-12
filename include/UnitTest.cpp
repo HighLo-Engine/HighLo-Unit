@@ -38,7 +38,7 @@ namespace highloUnit
 		}
 
 		timer.Stop();
-		std::cout << "OK: All Tests have passed successfully!" << std::endl;
+		std::cout << "OK: All Tests have passed successfully! The test duration took " << timer.GetRawTimeMeasure() << " microseconds." << std::endl;
 		return 0;
 	}
 }
