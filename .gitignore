@@ -352,6 +352,7 @@ MigrationBackup/
 # binaries
 bin/
 bin-obj/
+!vendor/bin/
 
 # visual studio files
 **.sln
