@@ -24,6 +24,7 @@ namespace highloUnit
 
 		Stopped = false;
 		OutputString = "";
+		RawTimeMeasure = "";
 		StartPoint = std::chrono::high_resolution_clock::now();
 	}
 	
@@ -37,6 +38,11 @@ namespace highloUnit
 		std::stringstream ss;
 		ss << " The Test took " << (end - start) << " microseconds.";
 		OutputString = ss.str().c_str();
+
+		std::stringstream sa;
+		sa << (end - start);
+		RawTimeMeasure = sa.str().c_str();
+
 		Stopped = true;
 	}
 
@@ -53,6 +59,11 @@ namespace highloUnit
 	const char *Timer::GetOutputString() const
 	{
 		return OutputString;
+	}
+
+	const char *Timer::GetRawTimeMeasure() const
+	{
+		return RawTimeMeasure;
 	}
 	
 	void Timer::PrintOutputString()
