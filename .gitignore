@@ -352,3 +352,9 @@ MigrationBackup/
 # binaries
 bin/
 bin-obj/
+
+# visual studio files
+**.sln
+**.vcxproj
+**.vcxproj.filters
+**.vcxproj.user
