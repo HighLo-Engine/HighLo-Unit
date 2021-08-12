@@ -127,7 +127,12 @@ namespace highloUnit
 		template<>
 		HL_UNIT_API inline static bool AssertEqual(Timer &timer, const std::vector<char*> &d1, const std::vector<char*> &d2)
 		{
-			HL_UNIT_ASSERT(d1 == d2, timer.GetName());
+			HL_UNIT_ASSERT(d1.size() == d2.size(), timer.GetName());
+
+			for (uint32 i = 0; i < d1.size(); ++i)
+			{
+				HL_UNIT_ASSERT(strcmp(d1[i], d2[i]) == 0, timer.GetName());
+			}
 
 			if (!timer.IsStopped())
 				timer.Stop();
@@ -259,7 +264,12 @@ namespace highloUnit
 		template<>
 		HL_UNIT_API inline static bool AssertNotEqual(Timer &timer, const std::vector<char*> &d1, const std::vector<char*> &d2)
 		{
-			HL_UNIT_ASSERT(d1 != d2, timer.GetName());
+			HL_UNIT_ASSERT(d1.size() != d2.size(), timer.GetName());
+
+			for (uint32 i = 0; i < d1.size(); ++i)
+			{
+				HL_UNIT_ASSERT(strcmp(d1[i], d2[i]) != 0, timer.GetName());
+			}
 
 			if (!timer.IsStopped())
 				timer.Stop();
