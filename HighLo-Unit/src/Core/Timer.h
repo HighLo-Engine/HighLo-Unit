@@ -11,7 +11,6 @@ namespace highloUnit
 		bool Stopped;
 		const char *Name;
 		const char *OutputString;
-		const char *RawTimeMeasure;
 		std::chrono::time_point<std::chrono::high_resolution_clock> StartPoint;
 
 	public:
@@ -25,7 +24,6 @@ namespace highloUnit
 
 		HL_UNIT_API const char *GetName() const;
 		HL_UNIT_API const char *GetOutputString() const;
-		HL_UNIT_API const char *GetRawTimeMeasure() const;
 		HL_UNIT_API void PrintOutputString();
 	};
 }
