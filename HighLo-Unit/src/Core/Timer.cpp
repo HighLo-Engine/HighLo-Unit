@@ -24,7 +24,6 @@ namespace highloUnit
 
 		Stopped = false;
 		OutputString = "";
-		RawTimeMeasure = "";
 		StartPoint = std::chrono::high_resolution_clock::now();
 	}
 	
