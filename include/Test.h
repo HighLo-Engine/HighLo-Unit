@@ -165,6 +165,30 @@ namespace highloUnit
 			return false;
 		}
 
+		template<>
+		HL_UNIT_API inline static bool AssertEqual(Timer &timer, const int64 &d1, const int64 &d2)
+		{
+			HL_UNIT_ASSERT(d1 == d2, timer.GetName());
+
+			if (!timer.IsStopped())
+				timer.Stop();
+
+			std::cout << "OK: Test " << timer.GetName() << " has passed." << timer.GetOutputString() << std::endl;
+			return false;
+		}
+
+		template<>
+		HL_UNIT_API inline static bool AssertEqual(Timer &timer, const uint64 &d1, const uint64 &d2)
+		{
+			HL_UNIT_ASSERT(d1 == d2, timer.GetName());
+
+			if (!timer.IsStopped())
+				timer.Stop();
+
+			std::cout << "OK: Test " << timer.GetName() << " has passed." << timer.GetOutputString() << std::endl;
+			return false;
+		}
+
 		template<typename T>
 		HL_UNIT_API inline static bool AssertNotEqual(Timer &timer, const T &str1, const T &str2)
 		{
@@ -280,6 +304,30 @@ namespace highloUnit
 
 		template<>
 		HL_UNIT_API inline static bool AssertNotEqual(Timer &timer, const int32 &d1, const int32 &d2)
+		{
+			if (!timer.IsStopped())
+				timer.Stop();
+
+			HL_UNIT_ASSERT(d1 != d2, timer.GetName());
+
+			std::cout << "OK: Test " << timer.GetName() << " has passed." << timer.GetOutputString() << std::endl;
+			return false;
+		}
+
+		template<>
+		HL_UNIT_API inline static bool AssertNotEqual(Timer &timer, const int64 &d1, const int64 &d2)
+		{
+			if (!timer.IsStopped())
+				timer.Stop();
+
+			HL_UNIT_ASSERT(d1 != d2, timer.GetName());
+
+			std::cout << "OK: Test " << timer.GetName() << " has passed." << timer.GetOutputString() << std::endl;
+			return false;
+		}
+
+		template<>
+		HL_UNIT_API inline static bool AssertNotEqual(Timer &timer, const uint64 &d1, const uint64 &d2)
 		{
 			if (!timer.IsStopped())
 				timer.Stop();
